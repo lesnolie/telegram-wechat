@@ -22,7 +22,7 @@ jobs:
                     "elements": [
                            {
                         "tag": "markdown",
-                        "content": " <<<{{PostText}}>>>"
+                        "content": " <<< {{PostText}}>>>"
                        },
                            {
                         "actions": [
