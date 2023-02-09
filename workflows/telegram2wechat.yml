@@ -12,7 +12,6 @@ jobs:
           url: https://open.feishu.cn/open-apis/bot/v2/hook/85d69e06-adc8-4077-9d99-604a04ae4565
           method: 'POST'
           body: |
-            ${{ toJson(on.telegram_bot.outputs) }}
             {
                  "msg_type": "interactive",
                  "card": {
@@ -23,7 +22,7 @@ jobs:
                     "elements": [
                            {
                         "tag": "markdown",
-                        "content": "{{telegram_text.text}}"
+                        "content": " ${{ toJson(on.telegram_bot.text) }}"
                        },
                            {
                         "actions": [
