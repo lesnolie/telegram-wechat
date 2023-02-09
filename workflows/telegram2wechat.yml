@@ -22,7 +22,7 @@ jobs:
                     "elements": [
                            {
                         "tag": "markdown",
-                        "content": " ${{ "telegram text".text }}"
+                        "content": " ${{ on.telegram_bot.outputs.text }}"
                        },
                            {
                         "actions": [
