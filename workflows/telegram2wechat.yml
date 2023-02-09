@@ -1,0 +1,55 @@
+on:
+  curl --request POST 'https://api.telegram.org/bot${{ TELEGRAM_BOT_TOKEN }}/setWebhook' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "url": "https://webhook.actionsflow.workers.dev/lesnolie/telegram-wechat/telegram2webhook.yml/telegram_bot?__token=${{ secrets.G_T }}"
+      }'
+  webhook: true
+jobs:
+  webhook:
+    name: Send HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: https://open.feishu.cn/open-apis/bot/v2/hook/85d69e06-adc8-4077-9d99-604a04ae4565
+          method: 'POST'
+          body: |
+            {
+                 "msg_type": "interactive",
+                 "card": {
+                    "config": {
+                                   "wide_screen_mode": true,
+                                    "enable_forward": true
+                               },
+                    "elements": [
+                           {
+                        "tag": "markdown",
+                        "content": " {{text}}"
+                       },
+                           {
+                        "actions": [
+                           {
+                               "tag": "button",
+                               "text": {
+                                  "content": "📱 Telegram 频道 ：盼盼：",
+                                  "tag": "lark_md"
+                               },
+                                "url": " https:/t.me/s/moyustudio",
+                                "type": "default",
+                                "value": {}
+                           }
+                          ],
+                          "tag": "action"
+                           }
+                          ],
+                    "header": {
+                      "template": "indigo",
+                      "title": {
+                        "content": " 🎦 panpan 盼盼 ",
+                        "tag": "plain-text"
+                        }
+                        }
+                        }
+            }
